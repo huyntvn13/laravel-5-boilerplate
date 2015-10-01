@@ -15,6 +15,16 @@ class Kernel extends ConsoleKernel {
 	];
 
 	/**
+	 * JWT middlewares registration
+	 * 
+	 * @var array
+	 */
+	protected $routeMiddleware = [
+	    'jwt.auth' => 'Tymon\JWTAuth\Middleware\GetUserFromToken',
+	    'jwt.refresh' => 'Tymon\JWTAuth\Middleware\RefreshToken',
+	];
+
+	/**
 	 * Define the application's command schedule.
 	 *
 	 * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
