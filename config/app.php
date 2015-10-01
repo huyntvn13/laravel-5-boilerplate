@@ -149,7 +149,6 @@ return [
 		/*
 		 * Application Service Providers...
 		 */
-		'Dingo\Api\Provider\LaravelServiceProvider',
 		'App\Providers\AccessServiceProvider',
 		'App\Providers\AppServiceProvider',
 		'App\Providers\BillingServiceProvider',
@@ -163,7 +162,9 @@ return [
 		'Laracasts\Utilities\JavaScript\JavascriptServiceProvider',
 		'Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProviderLaravel5',
 		'Arcanedev\LogViewer\LogViewerServiceProvider',
+		'Dingo\Api\Provider\LaravelServiceProvider',
 		'Tymon\JWTAuth\Providers\JWTAuthServiceProvider',
+		'Barryvdh\Cors\ServiceProvider',
 	],
 
 	/*
