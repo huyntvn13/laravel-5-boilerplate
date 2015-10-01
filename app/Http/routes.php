@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ApiAuthenticateController;
+
 /**
  * Switch between the included languages
  */
@@ -45,4 +47,17 @@ Route::group(['namespace' => 'Backend'], function ()
 			require(__DIR__ . "/Routes/Backend/Access.php");
 		});
 	});
+});
+
+$api = app('Dingo\Api\Routing\Router');
+/**
+ * API Routes
+ */
+$api->version('v1', function ($api) {
+	$api->post('login', 'App\Http\Controllers\ApiAuthenticateController@authenticate');
+	$api->post('validate_token', [
+    	'protected' => true,
+    	'uses'      => 'App\Http\Controllers\ApiAuthenticateController@validateToken',
+		'as'        =>  'api.validate_token'
+	]);	
 });
