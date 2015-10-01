@@ -149,6 +149,7 @@ return [
 		/*
 		 * Application Service Providers...
 		 */
+		'Dingo\Api\Provider\LaravelServiceProvider',
 		'App\Providers\AccessServiceProvider',
 		'App\Providers\AppServiceProvider',
 		'App\Providers\BillingServiceProvider',
@@ -162,6 +163,7 @@ return [
 		'Laracasts\Utilities\JavaScript\JavascriptServiceProvider',
 		'Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProviderLaravel5',
 		'Arcanedev\LogViewer\LogViewerServiceProvider',
+		'Tymon\JWTAuth\Providers\JWTAuthServiceProvider',
 	],
 
 	/*
@@ -215,5 +217,9 @@ return [
 		'HTML'		=> 'Illuminate\Html\HtmlFacade',
 		'Socialize' => 'Laravel\Socialite\Facades\Socialite',
 		'Active'    => 'HieuLe\Active\Facades\Active',
+		'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth',
+		'JWTFactory' => 'Tymon\JWTAuth\Facades\JWTFactory',
+		'DingoAPI' => 'Dingo\Api\Facade\API',
+		'DingoRoute' => 'Dingo\Api\Facade\Route',
 	],
 ];
