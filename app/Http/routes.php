@@ -54,6 +54,7 @@ $api = app('Dingo\Api\Routing\Router');
  * API Routes
  */
 $api->version('v1', function ($api) {
+	$api->resource('authenticate', 'App\Http\Controllers\ApiAuthenticateController', ['only' => ['index']]);
 	$api->post('login', 'App\Http\Controllers\ApiAuthenticateController@authenticate');
 	$api->post('validate_token', [
     	'protected' => true,
