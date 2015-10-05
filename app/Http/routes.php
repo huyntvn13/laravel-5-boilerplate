@@ -54,11 +54,24 @@ $api = app('Dingo\Api\Routing\Router');
  * API Routes
  */
 $api->version('v1', function ($api) {
-	$api->resource('authenticate', 'App\Http\Controllers\ApiAuthenticateController', ['only' => ['index']]);
-	$api->post('login', 'App\Http\Controllers\ApiAuthenticateController@authenticate');
-	$api->post('validate_token', [
+	$api->resource('auth', 'App\Http\Controllers\ApiAuthenticateController', ['only' => ['index']]);
+	$api->post('auth/login', 'App\Http\Controllers\ApiAuthenticateController@login');
+	$api->post('auth/signup', 'App\Http\Controllers\ApiAuthenticateController@signup');
+	$api->post('auth/recovery', 'App\Http\Controllers\ApiAuthenticateController@recovery');
+	$api->post('auth/reset', 'App\Http\Controllers\ApiAuthenticateController@reset');
+	$api->post('auth/validate_token', [
     	'protected' => true,
     	'uses'      => 'App\Http\Controllers\ApiAuthenticateController@validateToken',
 		'as'        =>  'api.validate_token'
 	]);	
+	$api->get('auth/user', 'App\Http\Controllers\ApiAuthenticateController@getAuthenticatedUser');
+
+	// example of protected route
+	$api->get('protected', ['middleware' => ['jwt.auth'], function () {		
+		return \App\User::all();
+ 	}]);
+	// example of free route
+	$api->get('free', function() {
+		return \App\User::all();
+	});
 });
